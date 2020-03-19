@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des pages{% endblock %}
+
+{% block body %}
+     
+
+
+<table>
+<tr>
+<th>id</th>
+<th>titre</th>
+<th>auteur</th>
+<th>contenu</th>
+
+</tr>
+
+        {% for page in pages %}
+<tr>
+<td>{{page.id}}</td>
+<td>{{page.titre}}</td>
+<td>{{page.auteur}}</td>
+<td>{{page.contenu}}</tdd>
+
+                </tr>
+            
+        {% endfor %}
+            </table>            
+        
+        </div>
+
+
+{% endblock %}

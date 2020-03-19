@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Controller;
-
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Page;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
@@ -16,4 +17,19 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
+    /**
+     * @Route("/admin/page", name="admin.page")
+     */
+    public function page(Request $request)
+    {
+        $repo=$this->getDoctrine() ->getRepository(Page::class);
+        $pages=$repo->findAll();
+            
+             
+        return $this->render('admin/page.html.twig', [
+            'controller_name' => 'AdminController',
+        'pages'=>$pages
+            ]);
+    }
+
 }
