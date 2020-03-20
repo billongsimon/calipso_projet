@@ -13,19 +13,20 @@ class PageFixtures extends Fixture
     {
         // $product = new Product();
         // $manager->persist($product);
+        $faker = \Faker\Factory::create();
     for($i=1;$i<6;$i++)
     {
         $categorie =new Categorie();
-        $categorie->setTitre("titre categorie". $i);
+        $categorie->setTitre($faker->sentence($nbWords = 6, $variableNbWords = true));
         $manager->persist($categorie);
         for($j=1;$j<20;$j++)
          {
           $page =new Page();
-        $page->setTitre("titrepage" . $j)
-        ->setAuteur("auteur" .$j)
-        ->setCreatedAt(new \DateTime())
+        $page->setTitre($faker->sentence($nbWords = 6, $variableNbWords = true))
+        ->setAuteur($faker->name())
+        ->setCreatedAt($faker->dateTimeBetween($startDate = '-3days', $endDate = 'now', $timezone = null))
         ->setJourAt(new \DateTime())
-        ->setContenu("contenu" . $j)
+        ->setContenu($faker->paragraph($nbSentences = 5, $variableNbSentences = true))
         ->setCategorie($categorie);
         $manager->persist($page);
         }
