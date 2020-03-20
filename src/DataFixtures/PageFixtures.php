@@ -16,7 +16,7 @@ class PageFixtures extends Fixture
     for($i=1;$i<6;$i++)
     {
         $categorie =new Categorie();
-        $categorie->setTitre("titre". $i);
+        $categorie->setTitre("titre categorie". $i);
         $manager->persist($categorie);
         for($j=1;$j<20;$j++)
          {
@@ -24,7 +24,7 @@ class PageFixtures extends Fixture
         $page->setTitre("titrepage" . $j)
         ->setAuteur("auteur" .$j)
         ->setCreatedAt(new \DateTime())
-        ->setDateJourAt(new \DateTime())
+        ->setJourAt(new \DateTime())
         ->setContenu("contenu" . $j)
         ->setCategorie($categorie);
         $manager->persist($page);

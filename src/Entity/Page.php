@@ -34,7 +34,7 @@ class Page
     /**
      * @ORM\Column(type="datetime")
      */
-    private $date_jourAt;
+    private $jourAt;
 
     /**
      * @ORM\Column(type="text")
@@ -87,14 +87,14 @@ class Page
         return $this;
     }
 
-    public function getDateJourAt(): ?\DateTimeInterface
+    public function getJourAt(): ?\DateTimeInterface
     {
-        return $this->date_jourAt;
+        return $this->jourAt;
     }
 
-    public function setDateJourAt(\DateTimeInterface $date_jourAt): self
+    public function setJourAt(\DateTimeInterface $jourAt): self
     {
-        $this->date_jourAt = $date_jourAt;
+        $this->jourAt = $jourAt;
 
         return $this;
     }

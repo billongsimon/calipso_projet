@@ -13,6 +13,7 @@
 <th>auteur</th>
 <th>contenu</th>
 <th>date de création</th>
+<th>date de mise à jour</th>
 <th>categorie</th>
 </tr>
 
@@ -23,6 +24,7 @@
 <td>{{page.auteur}}</td>
 <td>{{page.contenu}}</td>
 <td>{{page.createdAt | date('d/m/Y h:i')}}</td>
+<td>{{page.jourAt | date('d/m/Y h:i')}}</td>
 <td>{{page.categorie.titre}}</td>
                 </tr>
             
