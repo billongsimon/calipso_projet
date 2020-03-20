@@ -12,7 +12,8 @@
 <th>titre</th>
 <th>auteur</th>
 <th>contenu</th>
-
+<th>date de création</th>
+<th>categorie</th>
 </tr>
 
         {% for page in pages %}
@@ -20,8 +21,9 @@
 <td>{{page.id}}</td>
 <td>{{page.titre}}</td>
 <td>{{page.auteur}}</td>
-<td>{{page.contenu}}</tdd>
-
+<td>{{page.contenu}}</td>
+<td>{{page.createdAt | date('d/m/Y h:i')}}</td>
+<td>{{page.categorie.titre}}</td>
                 </tr>
             
         {% endfor %}
