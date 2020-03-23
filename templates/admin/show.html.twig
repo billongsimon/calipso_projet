@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Hello contact majeur{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <article>
+            <h1>Titre</h1>
+            {{page.id}}
+             Categorie
+            {{page.titre}}
+            <div>{{page.categorie.titre}}</div>
+            <div class = "metadata"> Ecrit le  21/10/2019 / {{page.categorie.titre}} </div>
+             <div class = "contenu">
+            <img src="https://via.placeholder.com/300x200" alt="">
+            <div>
+        {{page.createdAt | date('d/m/Y h:i')}}
+        {{page.jourAt | date('d/m/Y h:i')}}
+            </div>       
+       </article>   
+       </div>
+{% endblock %}
