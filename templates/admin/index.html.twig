@@ -3,14 +3,16 @@
 {% block title %}Liste des pages!{% endblock %}
 
 {% block body %}
+<h1>Liste des pages disponibles</h1>
 <div class="jumbotron">
         <div class="container">
         <div class="row">
 {% for page in pages %}
         <div class="col-4">
        <article>
+            
             <h2>{{page.titre}}</h2>
-            <div class = "metadata"> Ecrit le  21/10/2019 / {{page.categorie.titre}} </div>
+            <div class = "metadata">  </div>
              <div class = "contenu">
             <img src="https://via.placeholder.com/300x200" alt="">
              {{page.contenu}}

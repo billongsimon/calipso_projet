@@ -10,16 +10,27 @@
 </style>
 
     <article>
-            <h1>Titre</h1>
-            {{page.id}}
-             Categorie
+            <p>Numero de la page: {{page.id}}</p>
+
+           <p>Titre de la page:</p>
             {{page.titre}}
-            <div>{{page.categorie.titre}}</div>
-            <div class = "metadata"> Ecrit le  21/10/2019 / {{page.categorie.titre}} </div>
+            <p>Categorie de la page:</p>
+              {{page.categorie.titre}}
+              <br>
+              <br>
+              <br>
              <div class = "contenu">
             <img src="https://via.placeholder.com/300x200" alt="">
-            <div>
+             <br>
+              <br>
+              <br>
+            <p>Contenu de la page:</p>
+             {{page.contenu}}
+            <p>Nom de l'auteur de la page:</p>
+             {{page.auteur}}
+            <p>Date de creation de la page:</p>
         {{page.createdAt | date('d/m/Y h:i')}}
+        <p>Date de modification de la page:</p>
         {{page.jourAt | date('d/m/Y h:i')}}
             </div>       
        </article>   
