@@ -2,15 +2,14 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Page;
 use App\Entity\Categorie;
-use App\Entity\Utilisateur;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Doctrine\ORM\EntityManagerInterface; 
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
 
@@ -65,7 +64,7 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/form/page", name="admin.form.page")
      */
-    public function pageForm(Request $request, ObjectManager $manager)
+    public function pageForm(Request $request, EntityManagerInterface $entitymanager)
     {
         $page =new Page();
         $form = $this->createFormBuilder($page)
@@ -82,8 +81,8 @@ class AdminController extends AbstractController
         ->getForm();
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-        $manager->persist($page); 
-        $manager->flush();
+        $entitymanager->persist($page); 
+        $entitymanager->flush();
         return $this->redirectToRoute('admin.page', 
         ['id'=>$page->getId()]); // Redirection vers la page
         }
@@ -97,7 +96,7 @@ class AdminController extends AbstractController
     * @Route("/admin/page/{id}", name="admin.page.modif")
     */
     
-    public function pageModif(page $page, Request $request, ObjectManager $manager)
+    public function pageModif(Page $page, Request $request, EntityManagerInterface $entitymanager)
     {
         $form = $this->createFormBuilder($page)
         ->add('titre')
@@ -114,8 +113,8 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
                 
         if($form->isSubMitted() && $form->isValid()){
-            $manager->persist($page);
-            $manager->flush();
+            $entitymanager->persist($page);
+            $entitymanager->flush();
 
             return $this->redirectToRoute('admin.page', 
             ['id'=>$page->getId()]); // Redirection vers la page
@@ -124,17 +123,18 @@ class AdminController extends AbstractController
                'formModifPage' => $form->createView()
                ]);
     }
+    
     /**
     * @Route("/admin/page/{id}/deletart", name="admin.page.sup")
     */
     
-    public function pageSup($id, ObjectManager $manager, Request $request)
+    public function pageSup($id, EntityManagerInterface $entitymanager, Request $request)
     {
         $repo = $this->getDoctrine()->getRepository(Page::class);
         $page = $repo->find($id);
 
-        $manager->remove($page);
-        $manager->flush();
+        $entitymanager->remove($page);
+        $entitymanager->flush();
         
         return $this->redirectToRoute('admin.page');
     } 
