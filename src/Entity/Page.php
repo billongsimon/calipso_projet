@@ -83,7 +83,7 @@ class Page
     public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
-
+        $this->date = new \DateTime('now');
         return $this;
     }
 
@@ -95,7 +95,7 @@ class Page
     public function setJourAt(\DateTimeInterface $jourAt): self
     {
         $this->jourAt = $jourAt;
-
+        $this->date = new \DateTime('now');
         return $this;
     }
 

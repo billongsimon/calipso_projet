@@ -10,14 +10,15 @@
 {% for page in pages %}
         <div class="col-4">
        <article>
-            
-            <h2>{{page.titre}}</h2>  
+            <div class = "titre">
+            <h2>{{page.titre}}</h2>
             <div class = "metadata">  </div>
              <div class = "contenu">
             <img src="https://via.placeholder.com/300x200" alt="">
              {{page.contenu}}
             <a href="{{path('admin.show',{'id':page.id})}} " class="btn btn-primary"> Lire la suite </a>      
-            </div>          
+            </div>
+        </div>          
        </article>   
        </div>
 {% endfor %}

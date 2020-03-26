@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 
 
@@ -71,8 +72,8 @@ class AdminController extends AbstractController
         $form = $this->createFormBuilder($page)
         ->add('titre')
         ->add('auteur')
-        ->add('createdAt')
-        ->add('jourAt')
+        ->add('createdAt', DateType::class)
+        ->add('jourAt', DateType::class)
         ->add('contenu')
         ->add('categorie', EntityType::class, [
             'class' => Categorie::class,
@@ -102,8 +103,8 @@ class AdminController extends AbstractController
         $form = $this->createFormBuilder($page)
         ->add('titre')
         ->add('auteur')
-        ->add('createdAt')
-        ->add('jourAt')
+        ->add('createdAt', DateType::class)
+        ->add('jourAt', DateType::class)
         ->add('contenu')
         ->add('categorie', EntityType::class, [
             'class' => Categorie::class,
