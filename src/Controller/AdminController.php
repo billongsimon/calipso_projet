@@ -17,10 +17,14 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/admin", name="admin")
-     * @Route("/admin/index", name="admin")
-     */
+      /**
+     * @Route("admin/index", name="admin")
+     * @Route("/", name="admin")
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     * @return \Symfony\Component\HttpFoundation\Response
+    */
+    // Ma page d'accueil
     public function index(paginatorInterface $paginator, request $request)
     {
        
@@ -37,7 +41,10 @@ class AdminController extends AbstractController
     }
     /**
      * @Route("/admin/page", name="admin.page")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
+    // liste des pages
     public function page(Request $request)
     {
         $repo=$this->getDoctrine() ->getRepository(Page::class);
@@ -50,7 +57,11 @@ class AdminController extends AbstractController
     }
         /**
       * @Route("admin/show/{id}", name="admin.show")
+       @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
      */
+    // la ppage unique
     public function show($id, Request $request)
     {
         $repo=$this->getDoctrine() ->getRepository(Page::class);
@@ -64,7 +75,11 @@ class AdminController extends AbstractController
   
     /**
      * @Route("/admin/page/new", name="admin.form.page")
+      * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
+    // formulaire de création de la page
     public function pageForm (Request $request, EntityManagerInterface $manager)
     {
         $page =new Page();
@@ -96,8 +111,12 @@ class AdminController extends AbstractController
 
     /**
     * @Route("/admin/page/edit/{id}", name="admin.page.modif")
+    * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param Page $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
     */
-    
+    // formulaire de modification de la page
     public function pageModif(page $page, Request $request, EntityManagerInterface $manager)
     {
         $form = $this->createFormBuilder($page)
@@ -127,8 +146,12 @@ class AdminController extends AbstractController
     }
     /**
     * @Route("/admin/page/delete/{id}", name="admin.page.sup")
-    */
-    
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    // suppression de la page
     public function pageSup($id, EntityManagerInterface $manager, Request $request)
     {
         $repo = $this->getDoctrine()->getRepository(Page::class);
@@ -141,7 +164,10 @@ class AdminController extends AbstractController
     }
     /**
      * @Route("/admin/categorie", name="admin.categorie")
-     */
+      * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+    */
+    // liste des catégories
     public function categorie(Request $request)
     {
         $repos=$this->getDoctrine() ->getRepository(Categorie::class);
@@ -155,7 +181,11 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/admin/form/categorie", name="admin.form.categorie")
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
+    // formulaire de création d'une catégorie
     public function categorieForm(Request $request, EntityManagerInterface $manager)
     {
         $categorie = new Categorie();
@@ -177,8 +207,12 @@ class AdminController extends AbstractController
     }
     /**
     * @Route("/admin/categorie/edit/{id}", name="admin.categorie.modif")
-    */
-    
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param Categorie $categorie
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    // formulaire de modification d'une catégorie
     public function modifCategorie(categorie $categorie, Request $request, EntityManagerInterface $manager)
     {
         $form = $this->createFormBuilder($categorie)
@@ -199,8 +233,12 @@ class AdminController extends AbstractController
     }
     /**
     * @Route("/admin/categorie/delete/{id}", name="admin.categorie.sup")
-    */
-    
+     * @param Request $request
+     * @param EntityManagerInterface $manager
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    // suppression de la catégorie
     public function supCategorie($id, EntityManagerInterface $manager, Request $request)
     {
         $repo = $this->getDoctrine()->getRepository(Categorie::class);
