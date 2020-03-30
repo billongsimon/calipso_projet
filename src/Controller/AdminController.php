@@ -51,7 +51,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
 
      */
-
+    // ma page accueil
     public function index(Request $request, PaginatorInterface $paginator)
 
     {
@@ -93,7 +93,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
 
      */
-
+    // la liste des pages
     public function page(Request $request)
 
     {
@@ -129,7 +129,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
 
      */
-
+    // la page unique
     public function show(Request $request, $id)
 
     {
@@ -165,7 +165,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
 
      */
-
+    //  formulaire de creation d'une page
     public function pageForm(Request $request, EntityManagerInterface $manager)
 
     {
@@ -238,6 +238,8 @@ class AdminController extends AbstractController
 
      */
 
+     // formulaire de modification de la page
+
     public function pageModif(Request $request, EntityManagerInterface $manager, Page $page)
 
     {
@@ -307,7 +309,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
 
      */
-
+    // suppression de la page
     public function pageSup(Request $request, EntityManagerInterface $manager, $id)
 
     {
@@ -341,7 +343,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
 
      */
-
+    // formulaire de creation d'une catégorie
     public function categorie(Request $request)
 
     {
@@ -377,7 +379,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
 
      */
-
+    // formulaire de modification del la catégorie
     public function categorieForm(Request $request, EntityManagerInterface $manager)
 
     {
@@ -433,7 +435,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
 
      */
-
+    // suppression de la catégorie
     public function modifCategorie(Request $request, EntityManagerInterface $manager, Categorie $categorie)
 
     {
