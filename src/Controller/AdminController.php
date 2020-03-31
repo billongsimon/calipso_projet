@@ -19,7 +19,6 @@ class AdminController extends AbstractController
 {
       /**
      * @Route("admin/index", name="admin")
-     * @Route("/", name="admin")
      * @param Request $request
      * @param PaginatorInterface $paginator
      * @return \Symfony\Component\HttpFoundation\Response
