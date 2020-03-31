@@ -1,16 +1,129 @@
 {% extends 'base.html.twig' %}   
-         
-{% form_theme formPage 'bootstrap_4_layout.html.twig' %}
-{% block body %}
-<div class = "jumbotron">
-<h2>Creation d'une nouvelle page<h2>
-</div>
 
-{{ form_start(formPage) }}
-{{ form_widget(formPage) }}
-<button type="submit" class="btn btn-success">envoyer</button>
-{{ form_end(formPage) }}
+         
+
+{% form_theme formPage 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+
+    <div class="jumbotron">
+
+        <h2>Creation d'une nouvelle page<h2>
+
+    </div>
+
+    {{ form_start(formPage) }}
+
+    <div class="form-group">
+
+        {{ form_label(formPage.titre) }}
+
+        <div class="col-sm-4 col-xs-8 small-spacer">
+
+            {{ form_widget(formPage.titre) }}
+
+        </div>
+
+        <div class="col-xs-12">
+
+            {{ form_errors(formPage.titre) }}
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        {{ form_label(formPage.auteur) }}
+
+        <div class="col-sm-4 col-xs-8 small-spacer">
+
+            {{ form_widget(formPage.auteur) }}
+
+        </div>
+
+        <div class="col-xs-12">
+
+            {{ form_errors(formPage.auteur) }}
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        {{ form_label(formPage.contenu) }}
+
+        <div class="col-sm-4 col-xs-8 small-spacer">
+
+            {{ form_widget(formPage.contenu) }}
+
+        </div>
+
+        <div class="col-xs-12">
+
+            {{ form_errors(formPage.contenu) }}
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        {{ form_label(formPage.categorie) }}
+
+        <div class="col-sm-4 col-xs-8 small-spacer">
+
+            {{ form_widget(formPage.categorie) }}
+
+        </div>
+
+        <div class="col-xs-12">
+
+            {{ form_errors(formPage.categorie) }}
+
+        </div>
+
+    </div>
+
+    <div class="form-group d-none">
+
+        {{ form_label(formPage.createdAt) }}
+
+        <div class="col-sm-4 col-xs-8 small-spacer hidden">
+
+            {{ form_widget(formPage.createdAt) }}
+
+        </div>
+
+        <div class="col-xs-12">
+
+            {{ form_errors(formPage.createdAt) }}
+
+        </div>
+
+    </div>
+
+    <div class="form-group d-none">
+
+        {{ form_label(formPage.jourAt) }}
+
+        <div class="col-sm-4 col-xs-8 small-spacer hidden">
+
+            {{ form_widget(formPage.jourAt) }}
+
+        </div>
+
+        <div class="col-xs-12">
+
+            {{ form_errors(formPage.jourAt) }}
+
+        </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-success">envoyer</button>
+
+    {{ form_end(formPage) }}
 
 {% endblock %}
-
-
