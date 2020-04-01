@@ -14,12 +14,12 @@ class PageFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
         $faker = \Faker\Factory::create();
-    for($i=1;$i<6;$i++)
+    for($i=1;$i<5;$i++)
     {
         $categorie =new Categorie();
         $categorie->setTitre($faker->sentence($nbWords = 6, $variableNbWords = true));
         $manager->persist($categorie);
-        for($j=1;$j<20;$j++)
+        for($j=1;$j<10;$j++)
          {
           $page =new Page();
         $page->setTitre($faker->sentence($nbWords = 6, $variableNbWords = true))
