@@ -121,9 +121,8 @@ class AdminController extends AbstractController
     // formulaire de modification de la page
     public function pageModif(page $page, Request $request, EntityManagerInterface $manager)
     {
-        $page =new Page();
-        $page->setCreatedAt(new \DateTime());;
         $page->setJourAt(new \DateTime());
+      
         $form = $this->createFormBuilder($page)
         ->add('titre')
         ->add('auteur')
