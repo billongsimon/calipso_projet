@@ -10,7 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 
 
@@ -81,6 +81,9 @@ class AdminController extends AbstractController
     // formulaire de création de la page
     public function pageForm (Request $request, EntityManagerInterface $manager)
     {
+
+
+date_default_timezone_set('Europe/Paris');
         $page =new Page();
         $page->setCreatedAt(new \DateTime());;
         $page->setJourAt(new \DateTime());
@@ -89,8 +92,8 @@ class AdminController extends AbstractController
         $form = $this->createFormBuilder($page)
         ->add('titre')
         ->add('auteur')
-        ->add('createdAt', DateType::class)
-        ->add('jourAt', DateType::class)
+        ->add('createdAt', DateTimeType::class)
+        ->add('jourAt', DateTimeType::class)
         ->add('contenu')
         ->add('categorie', EntityType::class, [
             'class' => Categorie::class,
@@ -126,8 +129,8 @@ class AdminController extends AbstractController
         $form = $this->createFormBuilder($page)
         ->add('titre')
         ->add('auteur')
-        ->add('createdAt', DateType::class)
-        ->add('jourAt', DateType::class)
+        ->add('createdAt', DateTimeType::class)
+        ->add('jourAt', DateTimeType::class)
         ->add('contenu')
         ->add('categorie', EntityType::class, [
             'class' => Categorie::class,
