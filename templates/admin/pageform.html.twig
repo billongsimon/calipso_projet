@@ -121,6 +121,22 @@
         </div>
 
     </div>
+
+    <div class="form-group small-spacer">
+    {{ form_label(form.fichier, 'Document :') }}
+    <div class="row padding-right-15">
+        <div class="col-xs-10">
+            <input id="fichier_nom_fichier" type="text" class="form-control" readonly/>
+        </div>
+        <div class="col-xs-1">
+            <span id="upload-file" class="file-uploader">{{ form_widget(form.fichier) }}</span>
+        </div>
+    </div>
+    <small class="no-padding-left">
+        Format: .zip
+        <br/></small>
+    {{ form_errors(form.fichier) }}
+</div>
     
     <div class="row padding-right-15">
 
