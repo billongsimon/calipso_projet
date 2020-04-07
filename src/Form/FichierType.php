@@ -12,8 +12,23 @@ class FichierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add(
+                'typeContrat',
+                ChoiceType::class,
+                [
+                    'choices' => array_flip(Fichier::TYPE),
+                    'multiple' => false,
+                    'expanded' => false,
+                    'placeholder' => 'Choix...'
+                ]
+            )
+            ->add('fichier', FileType::class, [
+                'required' => true,
+            ])
+            ->add('saveReglesMetier', SubmitType::class)
         ;
     }
+
 
     public function configureOptions(OptionsResolver $resolver)
     {
