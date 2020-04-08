@@ -133,11 +133,7 @@ class AdminController extends AbstractController
             ->add('categorie', EntityType::class, [
                 'class'        => Categorie::class,
                 "choice_label" => 'titre'
-                ->add('fichier', EntityType::class, [
-                    'class'        => Fichier::class,
-                    "choice_label" => 'fichier''
-                ]
-                    ])
+            ])
             ->getForm();
         $form->handleRequest($request);
 
@@ -145,7 +141,7 @@ class AdminController extends AbstractController
             $manager->persist($page);
             $manager->flush();
 
-        return $this->redirectToRoute('admin.page',
+            return $this->redirectToRoute('admin.page',
                 ['id' => $page->getId()]);
         }
         return $this->render('admin/pagemodif.html.twig', [
