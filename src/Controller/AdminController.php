@@ -129,7 +129,7 @@ class AdminController extends AbstractController
             ->add('auteur')
             ->add('createdAt', DateTimeType::class)
             ->add('jourAt', DateTimeType::class)
-            >add('contenu')
+            ->add('contenu', CKEditorType::class)
             ->add('categorie', EntityType::class, [
                 'class'        => Categorie::class,
                 "choice_label" => 'titre'
