@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Categorie;
 use App\Entity\Page;
+use App\Entity\Fichier;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -20,7 +21,7 @@ class PageType extends AbstractType
             ->add('auteur')
             ->add('createdAt', DateTimeType::class)
             ->add('jourAt', DateTimeType::class)
-            ->add('contenu')
+            >add('contenu')
             ->add('categorie', EntityType::class, ['class' => Categorie::class])
             ->add('fichier', FileType::class, [
 //                'mapped'   => false, //@todo A enlever, je l'ai mis pour qu'il ne le prenne pas en compte lors de l'insertion en BDD

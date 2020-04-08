@@ -46,6 +46,11 @@ class Page
      */
     private $categorie;
 
+    /**
+     * @var UploadedFile
+     */
+    private $fichier;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,5 +126,21 @@ class Page
         $this->categorie = $categorie;
 
         return $this;
+    }
+
+    /**
+     * @return UploadedFile
+     */
+        public function getFichier()
+    {
+        return $this->fichier;
+    }
+
+        /**
+         * @param \Symfony\Component\HttpFoundation\File\UploadedFile $fichier
+         */
+        public function setFichier($fichier)
+    {
+        $this->fichier = $fichier;
     }
 }
