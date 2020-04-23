@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -50,6 +52,23 @@ class Page
      * @var UploadedFile
      */
     private $fichier;
+
+    /**
+     * @var Page
+     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="page_enfant")
+     */
+    private $page_parent;
+
+    /**
+     * @var ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="page_parent")
+     */
+    private $page_enfant;
+
+    public function __construct()
+    {
+        $this->page_enfant = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -127,20 +146,65 @@ class Page
 
         return $this;
     }
-
     /**
      * @return UploadedFile
      */
-        public function getFichier()
+    public function getFichier()
     {
         return $this->fichier;
     }
 
-        /**
-         * @param \Symfony\Component\HttpFoundation\File\UploadedFile $fichier
-         */
-        public function setFichier($fichier)
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $fichier
+     */
+    public function setFichier($fichier): self
     {
         $this->fichier = $fichier;
+
+        return $this;
+    }
+
+    /**
+     * @return Page
+     */
+    public function getPageParent(): ?Page
+    {
+        return $this->page_parent;
+    }
+
+    /**
+     * @param Page $page_parent
+     */
+    public function setPageParent($page_parent): self
+    {
+        $this->page_parent = $page_parent;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|self[]
+     */
+    public function getPageEnfant(): Collection
+    {
+        return $this->page_enfant;
+    }
+
+    public function addPageEnfant(self $page_enfants): self
+    {
+        if (!$this->page_enfant->contains($page_enfants)) {
+            $this->page_enfant[] = $page_enfants;
+        }
+
+        return $this;
+    }
+
+    public function removePageEnfants(self $page_enfants): self
+    {
+        if ($this->page_enfant->contains($page_enfant)) {
+            $this->page_enfant->removeElement($page_enfants);
+        }
+
+        return $this;
     }
 }

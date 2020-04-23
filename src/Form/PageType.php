@@ -2,17 +2,16 @@
 
 namespace App\Form;
 
-use App\Entity\Categorie;
 use App\Entity\Page;
 use App\Entity\Fichier;
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class PageType extends AbstractType
 {
@@ -21,15 +20,26 @@ class PageType extends AbstractType
         $builder
             ->add('titre')
             ->add('auteur')
+            ->add('contenu', CKEditorType::class)
             ->add('createdAt', DateTimeType::class)
             ->add('jourAt', DateTimeType::class)
-            ->add('contenu', CKEditorType::class)
-            ->add('categorie', EntityType::class, ['class' => Categorie::class])
-            ->add('fichier', FileType::class, [
-//                'mapped'   => false, //@todo A enlever, je l'ai mis pour qu'il ne le prenne pas en compte lors de l'insertion en BDD
-            ]);
+            ->add('categorie', EntityType::class, [
+                'class' => Categorie::class,
+                "choice_label" => 'titre'
+          ])
+          ->add('fichier', FileType::class, [
+            //                'mapped'   => false, //@todo A enlever, je l'ai mis pour qu'il ne le prenne pas en compte lors de l'insertion en BDD
+    ])
+    ->add('page_parent', EntityType::class, [
+        'class' => Page::class,
+        "choice_label" => 'titre'
+  ])
+  ->add('page_enfant', EntityType::class, [
+    'class' => Page::class,
+    "choice_label" => 'titre'
+]);
     }
-
+                    
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
