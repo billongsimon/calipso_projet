@@ -55,7 +55,7 @@ class Page
 
     /**
      * @var Page
-     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="page_enfant")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="enfants")
      */
     private $page_parent;
 
@@ -63,11 +63,11 @@ class Page
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="page_parent")
      */
-    private $page_enfant;
+    private $enfants;
 
     public function __construct()
     {
-        $this->page_enfant = new ArrayCollection();
+        $this->enfants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,24 +185,24 @@ class Page
     /**
      * @return Collection|self[]
      */
-    public function getPageEnfant(): Collection
+    public function getEnfants(): Collection
     {
-        return $this->page_enfant;
+        return $this->enfants;
     }
 
-    public function addPageEnfant(self $page_enfants): self
+    public function addEnfant(self $enfant): self
     {
-        if (!$this->page_enfant->contains($page_enfants)) {
-            $this->page_enfant[] = $page_enfants;
+        if (!$this->enfants->contains($enfant)) {
+            $this->enfants[] = $enfant;
         }
 
         return $this;
     }
 
-    public function removePageEnfants(self $page_enfants): self
+    public function removeEnfant(self $enfant): self
     {
-        if ($this->page_enfant->contains($page_enfant)) {
-            $this->page_enfant->removeElement($page_enfants);
+        if ($this->enfants->contains($enfant)) {
+            $this->enfants->removeElement($enfant);
         }
 
         return $this;

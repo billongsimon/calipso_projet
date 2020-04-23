@@ -33,11 +33,8 @@ class PageType extends AbstractType
     ->add('page_parent', EntityType::class, [
         'class' => Page::class,
         "choice_label" => 'titre'
-  ])
-  ->add('page_enfant', EntityType::class, [
-    'class' => Page::class,
-    "choice_label" => 'titre'
-]);
+  ]);
+
     }
                     
     public function configureOptions(OptionsResolver $resolver)
