@@ -20,37 +20,18 @@ class Fichier
     {
         return $this->id;
     }
-    
-        const TYPE = [
-            'ContratOptam' => 'Contrat OPTAM',
-            'IndicateursOptam' => 'Indicateurs Optam',
-            'IndicateursSuiviOptam' => 'Indicateurs Suivi Optam',
-        ];
-    
+        
         /**
          * @var UploadedFile
          */
         private $fichier;
-    
-    
-        private $typeContrat;
-    
+
         /**
-         * @return mixed
+         * @ORM\Column(type="string", length=255)
          */
-        public function getTypeContrat()
-        {
-            return $this->typeContrat;
-        }
+        private $titre;
     
-        /**
-         * @param mixed $typeContrat
-         */
-        public function setTypeContrat($typeContrat)
-        {
-            $this->typeContrat = $typeContrat;
-        }
-    
+        
         /**
          * @return UploadedFile
          */
@@ -65,6 +46,18 @@ class Fichier
         public function setFichier($fichier)
         {
             $this->fichier = $fichier;
+        }
+
+        public function getTitre(): ?string
+        {
+            return $this->titre;
+        }
+
+        public function setTitre(string $titre): self
+        {
+            $this->titre = $titre;
+
+            return $this;
         }
     }
     
