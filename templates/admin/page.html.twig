@@ -13,6 +13,7 @@
 <tr>
 <th>id</th>
 <th>titre</th>
+<th>PageParent</th>
 <th>auteur</th>
 <th>date de création</th>
 <th>date de mise à jour</th>
@@ -26,6 +27,7 @@
         {% for page in page %}
 <tr>
 <td>{{page.id}}</td>
+<td>{{page.titre}}</td>
 <td>{{page.titre}}</td>
 <td>{{page.auteur}}</td>
 <td>{{page.createdAt | date('d/m/Y h:i ')}}</td>
