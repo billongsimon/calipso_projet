@@ -30,6 +30,11 @@ class Fichier
          * @ORM\Column(type="string", length=255)
          */
         private $titre;
+
+            /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="fichier")
+     */
+    private $pages;
     
         
         /**

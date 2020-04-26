@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200426121657 extends AbstractMigration
+final class Version20200426143420 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,9 @@ final class Version20200426121657 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE page DROP FOREIGN KEY FK_140AB620499475BF');
-        $this->addSql('DROP INDEX IDX_140AB620499475BF ON page');
-        $this->addSql('ALTER TABLE page ADD page_parent VARCHAR(255) NOT NULL, DROP page_parent_id');
+        $this->addSql('ALTER TABLE page ADD fichier_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE page ADD CONSTRAINT FK_140AB620F915CFE FOREIGN KEY (fichier_id) REFERENCES fichier (id)');
+        $this->addSql('CREATE INDEX IDX_140AB620F915CFE ON page (fichier_id)');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +32,8 @@ final class Version20200426121657 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE page ADD page_parent_id INT DEFAULT NULL, DROP page_parent');
-        $this->addSql('ALTER TABLE page ADD CONSTRAINT FK_140AB620499475BF FOREIGN KEY (page_parent_id) REFERENCES page (id)');
-        $this->addSql('CREATE INDEX IDX_140AB620499475BF ON page (page_parent_id)');
+        $this->addSql('ALTER TABLE page DROP FOREIGN KEY FK_140AB620F915CFE');
+        $this->addSql('DROP INDEX IDX_140AB620F915CFE ON page');
+        $this->addSql('ALTER TABLE page DROP fichier_id');
     }
 }
