@@ -50,9 +50,9 @@ class Page
 
     /**
      * @var UploadedFile
-      * @ORM\ManyToOne(targetEntity="App\Entity\Fichier", inversedBy="pages")
+      * @ORM\ManyToOne(targetEntity="App\Entity\Document", inversedBy="pages")
      */
-    private $fichier;
+    private $document;
 
     /**
      * @var Page

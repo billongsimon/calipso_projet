@@ -2,38 +2,17 @@
          
 {% form_theme formModifCat 'bootstrap_4_layout.html.twig' %}
 
-{%{% extends 'base.html.twig' %}   
-
-
 {% block body %}
+<div class = "jumbotron">
+    <h2> Modification de la catégorie</h2>
+</div>
 
-    <div class="jumbotron">
+{{ form_start(formModifCat) }}
 
-        <h2>Modification d'une catégorie<h2>
-
-    </div>
-
-    {{ form_start(formCategorie) }}
-
-    <div class="form-group">
-
-        {{ form_label(formCategorie.titre) }}
-
-        <div class="col-sm-4 col-xs-8 small-spacer">
-
-            {{ form_widget(formCategorie.titre) }}
-
-        </div>
-
-        <div class="col-xs-12">
-
-            {{ form_errors(formCategorie.titre) }}
-
-        </div>
-    
-    <button type="submit" class="btn btn-success">envoyer</button>
-
-    {{ form_end(formCategorie) }}
+{{ form_widget(formModifCat) }}
+<button type="submit" class="btn btn-success">envoyer</button>
+{{ form_end(formModifCat) }}
 
 {% endblock %}
+
 

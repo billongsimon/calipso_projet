@@ -3,7 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Page;
-use App\Entity\Fichier;
+use App\Entity\Document;
 use App\Entity\Categorie;
 use Symfony\Component\Form\AbstractType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
@@ -27,8 +27,8 @@ class PageType extends AbstractType
                 'class' => Categorie::class,
                 "choice_label" => 'titre'
                 ])
-          ->add('fichier', EntityType::class, [
-            'class' => Fichier::class,
+          ->add('document', EntityType::class, [
+            'class' => Document::class,
             "choice_label" => 'titre'
             ])
           
