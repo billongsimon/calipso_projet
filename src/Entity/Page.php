@@ -150,17 +150,17 @@ class Page
     /**
      * @return UploadedFile
      */
-    public function getFichier()
+    public function getDocument()
     {
-        return $this->fichier;
+        return $this->document;
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $fichier
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $document
      */
-    public function setFichier($fichier): self
+    public function setDocument($document): self
     {
-        $this->fichier = $fichier;
+        $this->document= $document;
 
         return $this;
     }
