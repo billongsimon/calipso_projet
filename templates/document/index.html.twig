@@ -19,7 +19,7 @@
             <tr>
                 <td>{{ document.id }}</td>
                  <td>{{ document.titre }}</td>
-    <td><a href="{{path('document_new', {'id':documents.id})}}" class="btn btn-info"> Ajouter un document </a></td>                                              
+    <td><a href="{{path('document_new', {'id':document.id})}}" class="btn btn-info"> Ajouter un document </a></td>                                              
     <td><a href="{{path('document_delete', {'id':document.id})}}" class="btn btn-danger"> Supprimer un document </a></td>  
                 </td>
             </tr>
@@ -31,7 +31,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('document_new') }}">Ajout d'un fichier</a>
+    <a href="{{ path('document_new') }}">Ajout d'un document</a>
     <a href="{{ path('admin') }}"retour vers l'accueil</a>
     
 {% endblock %}

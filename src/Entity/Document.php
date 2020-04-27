@@ -33,10 +33,11 @@ class Document
          */
         private $titre;
 
-            /**
+     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="document")
      */
     private $pages;
+
 
         /**
          * @return UploadedFile
