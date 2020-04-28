@@ -92,8 +92,11 @@ class AdminController extends AbstractController
             $page = $form->getData();
 
 
-            /** @var UploadedFile $file */
-            $file = $page->getFichier();
+            /** @var UploadedFile $file 
+             * 
+             */
+             
+            $page->getDocument();
 
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
 
