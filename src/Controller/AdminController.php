@@ -91,14 +91,6 @@ class AdminController extends AbstractController
             /** @var Page $page */
             $page = $form->getData();
 
-
-            /** @var UploadedFile $file */
-            $file = $page->getFichier();
-
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-
-            $file->move( '../uploads',   $fileName);
-
             $page->setCreatedAt(new \DateTime());
             $page->setJourAt(new \DateTime());
             $manager->persist($page);
@@ -126,15 +118,20 @@ class AdminController extends AbstractController
         $page->setJourAt(new \DateTime());
 
         $form = $this->createFormBuilder($page)
-            ->add('titre')
-            ->add('auteur')
-            ->add('createdAt', DateTimeType::class)
-            ->add('jourAt', DateTimeType::class)
-            >add('contenu')
-            ->add('categorie', EntityType::class, [
-                'class'        => Categorie::class,
-                "choice_label" => 'titre'
+        ->add('titre')
+        ->add('auteur')
+        ->add('contenu', CKEditorType::class)
+        ->add('createdAt', DateTimeType::class)
+        ->add('jourAt', DateTimeType::class)
+        ->add('categorie', EntityType::class, [
+            'class' => Categorie::class,
+            "choice_label" => 'titre'
             ])
+      ->add('documents', EntityType::class, [
+        'class' => Document::class,
+        "choice_label" => 'titre',
+        'multiple' => true,
+        ])
             ->getForm();
         $form->handleRequest($request);
 
