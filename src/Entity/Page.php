@@ -52,7 +52,7 @@ class Page
     * @var page 
     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="enfants")
      */
-    private $parent;
+    private $page_parent;
 
     /**
     * var ArrayCollection 
@@ -150,7 +150,7 @@ class Page
         return $this;
     }
     /**
-     * @return page
+     * @return page $page_parent
      */
      
         public function getPageParent(): ?page
@@ -161,7 +161,7 @@ class Page
     * @param page $page_parent
     */
 
-        public function setParent( $parent): self
+        public function setPageParent( $page_parent): self
         {
             $this->page_parent = $page_parent;
 
