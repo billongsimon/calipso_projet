@@ -13,6 +13,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
+
+
 class PageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -27,14 +29,16 @@ class PageType extends AbstractType
                 'class' => Categorie::class,
                 "choice_label" => 'titre'
                 ])
-          ->add('document', EntityType::class, [
+          ->add('documents', EntityType::class, [
             'class' => Document::class,
             "choice_label" => 'titre'
+            'multiple' => true
+
             ])
           
     ->add('page_parent', EntityType::class, [
         'class' => Page::class,
-        "choice_label" => 'titre'
+        "choice_label" => 'titre
   ]);
 
     }

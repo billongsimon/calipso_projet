@@ -47,30 +47,32 @@ class Page
      * @ORM\ManyToOne(targetEntity="App\Entity\Categorie", inversedBy="pages")
      */
     private $categorie;
-
+     
     /**
-     * @var UploadedFile
-      * @ORM\ManyToOne(targetEntity="App\Entity\Document", inversedBy="pages")
+    * @var page 
+    * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="enfants")
      */
-    private $document;
+    private $parent;
 
     /**
-     * @var Page
-     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="enfants")
-     */
-    private $page_parent;
-
-    /**
-     * @var ArrayCollection
-     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="page_parent")
+    * var ArrayCollection 
+    * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="page_parent")
      */
     private $enfants;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Document", mappedBy="page")
+     */
+    private $documents;
+
     public function __construct()
     {
+        
         $this->enfants = new ArrayCollection();
+        $this->documents = new ArrayCollection();
     }
 
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -148,64 +150,78 @@ class Page
         return $this;
     }
     /**
-     * @return UploadedFile
+     * @return page
      */
-    public function getDocument()
-    {
-        return $this->document;
-    }
-
+     
+        public function getPageParent(): ?page
+        {
+            return $this->page_parent;
+        }
     /**
-     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $document
-     */
-    public function setDocument($document): self
-    {
-        $this->document= $document;
+    * @param page $page_parent
+    */
 
-        return $this;
-    }
+        public function setParent( $parent): self
+        {
+            $this->page_parent = $page_parent;
 
-    /**
-     * @return Page
-     */
-    public function getPageParent(): ?Page
-    {
-        return $this->page_parent;
-    }
-
-    /**
-     * @param Page $page_parent
-     */
-    public function setPageParent($page_parent): self
-    {
-        $this->page_parent = $page_parent;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|self[]
-     */
-    public function getEnfants(): Collection
-    {
-        return $this->enfants;
-    }
-
-    public function addEnfant(self $enfant): self
-    {
-        if (!$this->enfants->contains($enfant)) {
-            $this->enfants[] = $enfant;
+            return $this;
         }
 
-        return $this;
-    }
+        /**
+         * @return Collection|self[]
+         */
+        public function getEnfants(): Collection
+        {
+            return $this->enfants;
+        }
 
-    public function removeEnfant(self $enfant): self
+        public function addEnfant(self $enfant): self
+        {
+            if (!$this->enfants->contains($enfant)) {
+                $this->enfants[] = $enfant;
+            }
+
+            return $this;
+        }
+
+        public function removeEnfant(self $enfant): self
     {
         if ($this->enfants->contains($enfant)) {
             $this->enfants->removeElement($enfant);
         }
 
-        return $this;
+            return $this;
     }
+
+        /**
+         * @return Collection|Document[]
+         */
+        public function getDocuments(): Collection
+        {
+            return $this->documents;
+        }
+
+        public function addDocument(Document $document): self
+        {
+            if (!$this->documents->contains($document)) {
+                $this->documents[] = $document;
+                $document->setPage($this);
+            }
+
+            return $this;
+        }
+
+        public function removeDocument(Document $document): self
+        {
+            if ($this->documents->contains($document)) {
+                $this->documents->removeElement($document);
+                // set the owning side to null (unless already changed)
+                if ($document->getPage() === $this) {
+                    $document->setPage(null);
+                }
+            }
+
+            return $this;
+        }    
 }

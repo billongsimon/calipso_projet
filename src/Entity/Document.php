@@ -33,10 +33,10 @@ class Document
          */
         private $titre;
 
-     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Page", mappedBy="document")
+   /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="documents")
      */
-    private $pages;
+    private $page;
 
 
         /**
