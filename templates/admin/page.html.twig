@@ -27,8 +27,8 @@
         {% for page in page %}
 <tr>
 <td>{{page.id}}</td>
-<td>{{page.titre}}</td>
-td>{% if page.page_parent is not null %}{{ page.page_parent.titre }}{% endif %}</td>
+<td><a href="{{path('admin.show',{'id':page.id})}}">{{page.titre}}</a></td>
+<td>{% if page.pageParent is not null %}{{ page.pageParent.titre }}{% endif %}</td>
 <td>{{page.auteur}}</td>
 <td>{{page.createdAt | date('d/m/Y h:i ')}}</td>
 <td>{{page.jourAt | date('d/m/Y h:i')}}</td>
