@@ -3,6 +3,12 @@
 {% block title %}Liste des documents{% endblock %}
 
 {% block body %}
+<a href="{{path('admin')}}" class="btn btn-primary"> retour vers l'accueil </a> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <h1>Liste des documents</h1>
 
     <table class="table">
@@ -32,7 +38,6 @@
     </table>
 
     <a href="{{ path('document_new') }}">Ajout d'un document</a>
-    <a href="{{ path('admin') }}"retour vers l'accueil</a>
     
 {% endblock %}
 

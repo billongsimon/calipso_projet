@@ -4,7 +4,10 @@
 
 {% block body %}
      
-
+<a href="{{path('admin')}}" class="btn btn-primary"> retour vers l'accueil </a> 
+    <br>
+    <br>
+    <br>
 <a href="{{path('admin.form.categorie')}}" class="btn btn-primary"> Créer une categorie </a>                                              
 <table>
 <tr>
@@ -23,6 +26,5 @@
             
         {% endfor %}
             </table>            
-        
         </div>
 {% endblock %}

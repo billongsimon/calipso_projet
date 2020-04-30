@@ -26,7 +26,7 @@ class Document
         /**
          * @var UploadedFile
          */
-        private $fichier;
+        private $document;
 
         /**
          * @ORM\Column(type="string", length=255)
@@ -42,17 +42,17 @@ class Document
         /**
          * @return UploadedFile
          */
-        public function getFichier()
+        public function getDocument()
         {
-            return $this->ichier;
+            return $this->document;
         }
     
         /**
          * @param \Symfony\Component\HttpFoundation\File\UploadedFile $document
          */
-        public function setFichier($fichier)
+        public function setDocument($doument)
         {
-            $this->fichier = $fichier;
+            $this->document = $document;
         }
 
         public function getTitre(): ?string

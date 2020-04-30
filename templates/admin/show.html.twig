@@ -4,6 +4,20 @@
 {% block title %}Calipso{% endblock %}
 
 {% block body %}
+<a href="{{path('admin')}}" class="btn btn-primary"> retour vers l'accueil </a> 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<a href="{{path('admin.page')}}" class="btn btn-primary"> retour vers la liste</a> 
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  
     <article>
     <div>
             <p>Numero de la page: {{page.id}}</p>
@@ -25,10 +39,11 @@
         {{page.jourAt | date('d/m/Y h:i ')}}
       <p>documents </p>
       {% for document in page.documents %}
-    {{ document.titre }}
+    
+    {{ document.titre }}<br>
 
 {% endfor %}
             </div>
        </article>   
-       
+      <a href="{{ path('admin') }}"retour vers l'accueil</a>     
 {% endblock %}

@@ -4,7 +4,11 @@
 
 {% block body %}
 <div class="jumbotron">
-<a href="{{path('admin.form.page')}}" class="btn btn-primary"> nouvel page </a>                                      
+<a href="{{path('admin')}}" class="btn btn-primary"> retour vers l'accueil </a> 
+        <br>  
+        <br>
+        <br>
+        <p><a href="{{path('admin.form.page')}}" class="btn btn-primary"> nouvel page </a></p>                                
 </div>
      
 
@@ -35,7 +39,7 @@
 <td>{{page.contenu}}</td>
 <td>{{page.categorie.titre}}</td>
 <td><a href="{{path('admin.page.modif', {'id':page.id})}}" class="btn btn-info"> modifier </a>                              
-<td><a href="{{path('admin.page.sup', {'id':page.id})}}" class="btn btn-danger"> Supprimer </a>                              
+<td><a href="{{path('admin.page.sup', {'id':page.id})}}" class="btn btn-danger"> Supprimer </a>                           
                 </tr>
             
         {% endfor %}
