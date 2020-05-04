@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
-
+use App\BusinessService\ArborescenceBS;
 
 class AdminController extends AbstractController
 {
@@ -63,7 +63,7 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     // la ppage unique
-    public function show($id, Request $request)
+    public function show($id, Request $request,ArborescenceBS $arborescenceBS)
     {
         $repo = $this->getDoctrine()->getRepository(Page::class);
         $page = $repo->find($id);
