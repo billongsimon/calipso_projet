@@ -22,18 +22,30 @@ class ArborescenceBS
         $this->w3DS = $w3DS;
     }
 
-    function arbreBS($items) {
 
-        $childs = [];
-    
-        foreach ($items as $item)
-            $childs[$item->parent_id][] = $item;
-    
-        foreach ($items as $item) if (isset($childs[$item->id]))
-            $item->childs = $childs[$item->id];
-    
-        return $childs[0];
-    }
-
-  
-}
+    function arbreBS($array, $currentParent, $currLevel = 0, $prevLevel = -1) {
+         
+        foreach ($array as $pageId => $page) {
+         
+        if ($currentParent == $page['page_parent_id']) {                       
+            if ($currLevel > $prevLevel) echo " <ol class='tree'> "; 
+         
+            if ($currLevel == $prevLevel) echo " </li> ";
+         
+            echo '<li> <label for="subfolder2">'.$category['name'].'</label> <input type="checkbox" name="subfolder2"/>';
+         
+            if ($currLevel > $prevLevel) { $prevLevel = $currLevel; }
+         
+            $currLevel++; 
+         
+            createTreeView ($array, $pageId, $currLevel, $prevLevel);
+         
+            $currLevel--;               
+            }   
+         
+        }
+         
+        if ($currLevel == $prevLevel) echo " </li>  </ol> ";
+         
+        }
+    }        
