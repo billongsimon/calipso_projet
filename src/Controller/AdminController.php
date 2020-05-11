@@ -39,7 +39,10 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
             'pages'           => $pages
         ]);
+      
     }
+
+    
     /**
      * @Route("/admin/page", name="admin.page")
      * @param Request $request
@@ -48,13 +51,18 @@ class AdminController extends AbstractController
     // liste des pages
     public function page(Request $request)
     {
+        
         $repo = $this->getDoctrine()->getRepository(Page::class);
         $page = $repo->findAll();
+        
+     
 
         return $this->render('admin/page.html.twig', [
             'controller_name' => 'AdminController',
             'page'            => $page
+          
         ]);
+            
     }
     /**
      * @Route("admin/show/{id}", name="admin.show")
@@ -63,11 +71,11 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     // la ppage unique
-    public function show($id, Request $request,ArborescenceBS $arborescenceBS)
+    public function show($id, Request $request)
     {
         $repo = $this->getDoctrine()->getRepository(Page::class);
         $page = $repo->find($id);
-
+       
         return $this->render('admin/show.html.twig', [
             'controller_name' => 'AdminController',
             'page'            => $page
