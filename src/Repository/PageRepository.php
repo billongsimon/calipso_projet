@@ -35,7 +35,9 @@ class PageRepository extends ServiceEntityRepository
         ;
     }
     */
-
+    /** 
+    * @return Page[] Returns an array of Page objects
+    */
     /*
     public function findOneBySomeField($value): ?Page
     {
@@ -47,4 +49,18 @@ class PageRepository extends ServiceEntityRepository
         ;
     }
     */
-}
+    /**
+     * @return Page[] Returns an array of Page objects
+     */
+    
+    public function findPagesSansParent()
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.page_parent IS NULL')
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+        }
+        
+    }

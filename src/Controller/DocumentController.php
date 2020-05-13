@@ -30,7 +30,7 @@ class DocumentController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $document = new Document();
+        $document = new Document(); 
         $form = $this->createForm(DocumentType::class, $document);
         $form->handleRequest($request);
 

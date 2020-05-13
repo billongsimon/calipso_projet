@@ -49,17 +49,19 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     // liste des pages
-    public function page(Request $request)
+    public function page(Request $request,ArborescenceBS $arborescenceBS)
     {
         
         $repo = $this->getDoctrine()->getRepository(Page::class);
         $page = $repo->findAll();
         
+        $arborescence = $arborescenceBS->arbre();
      
 
         return $this->render('admin/page.html.twig', [
             'controller_name' => 'AdminController',
-            'page'            => $page
+            'page'            => $page,
+            'arborescence'=>$arborescence
           
         ]);
             
@@ -96,7 +98,12 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             /** @var Page $page */
+            $file = $page->getDocument();        
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();    
+            $file->move( '../uploads',   $fileName);
+
             $page = $form->getData();
 
             $page->setCreatedAt(new \DateTime());

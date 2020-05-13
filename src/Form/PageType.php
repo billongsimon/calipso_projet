@@ -28,13 +28,13 @@ class PageType extends AbstractType
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 "choice_label" => 'titre',
-                'required' => false,
+                'required' => false
                 ])
           ->add('documents', EntityType::class, [
             'class' => Document::class,
             "choice_label" => 'titre',
             'multiple' => true,
-            'required' => false,
+            'required' => false
 
             ])
           
