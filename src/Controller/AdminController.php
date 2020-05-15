@@ -49,23 +49,23 @@ class AdminController extends AbstractController
      * @return \Symfony\Component\HttpFoundation\Response
      */
     // liste des pages
-    public function page(Request $request,ArborescenceBS $arborescenceBS)
+    public function page(Request $request)
     {
         
         $repo = $this->getDoctrine()->getRepository(Page::class);
         $page = $repo->findAll();
         
-        $arborescence = $arborescenceBS->arbre();
-     
-
+    
         return $this->render('admin/page.html.twig', [
             'controller_name' => 'AdminController',
             'page'            => $page,
-            'arborescence'=>$arborescence
+       
           
         ]);
             
     }
+  
+
     /**
      * @Route("admin/show/{id}", name="admin.show")
     @param Request $request

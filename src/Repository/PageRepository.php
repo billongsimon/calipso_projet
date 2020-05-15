@@ -56,7 +56,7 @@ class PageRepository extends ServiceEntityRepository
     public function findPagesSansParent()
     {
         return $this->createQueryBuilder('p')
-            ->where('p.page_parent IS NULL')
+            ->where('p.page_parent IS  NULL')
             ->orderBy('p.id', 'ASC')
             ->getQuery()
             ->getResult()
