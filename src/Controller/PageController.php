@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PageController extends AbstractController
 {
     /**
-     * @Route("/page/index")
+     * @Route("/page/index", name="page")
      *
      * @param Request $request
      * @param PaginatorInterface $paginator

@@ -140,13 +140,20 @@ class AdminController extends AbstractController
         ->add('jourAt', DateTimeType::class)
         ->add('categorie', EntityType::class, [
             'class' => Categorie::class,
-            "choice_label" => 'titre'
+            "choice_label" => 'titre',
+            'required' => false
             ])
       ->add('documents', EntityType::class, [
         'class' => Document::class,
         "choice_label" => 'titre',
         'multiple' => true,
+        'required' => false
         ])
+        ->add('page_parent', EntityType::class, [
+            'class' => Page::class,
+            "choice_label" => 'titre',
+            'required' => false
+            ])
             ->getForm();
         $form->handleRequest($request);
 

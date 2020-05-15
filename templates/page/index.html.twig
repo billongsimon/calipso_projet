@@ -4,8 +4,7 @@
 
 {% block body %}
 
-{% for arborescence in arborescence %}
+    {% include 'partials/menu.html.twig' with {'arborescence': arborescence} %}
 
-{% endfor %}
 
 {% endblock %}
