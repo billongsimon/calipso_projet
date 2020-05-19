@@ -25,7 +25,7 @@ class PageController extends AbstractController
     {
         $arborescence = $arborescenceBS->arbre();
 
-      //  dump($arborescence);
+   // dump($arborescence);die;
 
         return $this->render('page/index.html.twig', [
 

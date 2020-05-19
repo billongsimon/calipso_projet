@@ -48,12 +48,12 @@ class ArborescenceBS
      * On explore une branche. Cette méthode est récursive. Elle s'appelle elle-même. Elle parcoure tout l'arbre de page en page.
      *
      * @param Page $page
-     * @param $nenfant
+     * @param $niveau
      */
-    private function branche(Page $page, $enfant = 0): void
+    private function branche(Page $page, $niveau=0 ): void
     {
         $this->arbre[] = [
-            'enfant' => $enfant,
+            'niveau' => $niveau,
             'page' => $page,
         ];
 
@@ -61,7 +61,7 @@ class ArborescenceBS
         foreach ($page->getEnfants() as $pageEnfant) {
 
             // Pour chaque page enfant, on va également parcourir les sous pages.
-            $this->branche($pageEnfant, $enfant++);
+            $this->branche($pageEnfant, $niveau++);
         }
     }
 }
