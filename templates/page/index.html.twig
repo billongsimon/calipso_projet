@@ -4,13 +4,14 @@
 
 {% block body %}
 
-    {% for arborescence in arborescence %} 
+    {% for arborescence in arborescences %} 
+<ul>
+{% for arborescence in arborescences %}
+    <p>{% if arborescence.niveau is not null %}{{ arborescence.page.titre }}{% endif %}</p>
 
-        {{ arborescence. }}
-   
-
+    <li>{{ arborescence.page.titre }}</li>
     {% endfor %}
-
-
+</ul>
+    {% endfor %}
 
 {% endblock %}
