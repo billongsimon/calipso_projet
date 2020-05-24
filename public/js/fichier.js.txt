@@ -1,4 +1,0 @@
-{% block javascripts %}
-<!-- JS library -->
-<script src="{{ asset('/js/fichier.js') }}" type="text/javascript"></script>
-{% endblock %}
