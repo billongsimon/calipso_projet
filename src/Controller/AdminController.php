@@ -20,7 +20,7 @@ use App\BusinessService\ArborescenceBS;
 class AdminController extends AbstractController
 {
     /**
-     * @Route("admin/index", name="admin")
+     * @Route("admin", name="admin")
      * @param Request $request
      * @param PaginatorInterface $paginator
      * @return \Symfony\Component\HttpFoundation\Response
