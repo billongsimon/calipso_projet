@@ -52,7 +52,7 @@ class PageRepository extends ServiceEntityRepository
     /**
      * @return Page[] Returns an array of Page objects
      */
-    
+    /*
     public function findPagesSansParent()
     {
         return $this->createQueryBuilder('p')
@@ -62,5 +62,22 @@ class PageRepository extends ServiceEntityRepository
             ->getResult()
             ;
         }
+        */
         
-    }
+        /**
+         * @return Page[] Returns an array of Page objects
+         */
+        // requete qui transforme le dql ensql
+        
+       public function findLastPages()
+    {
+        $query= "select * from page order by created_at desc limit 3";  
+              $stmt = $this->getEntityManager()
+              ->getConnection()->prepare($query);
+                $stmt->execute();  
+              return $stmt->fetchAll();
+                ;
+            }
+            
+     }   
+           

@@ -2,12 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DocumentRepository")
- * 
  */
 class Document
 {
@@ -18,65 +16,81 @@ class Document
      */
     private $id;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $titre;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="documents")
+     
+     */
+    private $page;
+
+    /**
+     * @var UploadedFile
+    */
+    private $fichier;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $originalDocument;
+
     public function getId(): ?int
     {
         return $this->id;
     }
-        
-        /**
-         * @var UploadedFile
-         */
-        private $document;
 
-        /**
-         * @ORM\Column(type="string", length=255)
-         */
-        private $titre;
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
 
-   /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Page", inversedBy="documents")
-     */
-    private $page;
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
 
+        return $this;
+    }
 
-        /**
-         * @return UploadedFile
-         */
-        public function getDocument()
-        {
-            return $this->document;
-        }
-    
-        /**
-         * @param \Symfony\Component\HttpFoundation\File\UploadedFile $document
-         */
-        public function setDocument($doument)
-        {
-            $this->document = $document;
-        }
+    public function getPage(): ?Page
+    {
+        return $this->page;
+    }
 
-        public function getTitre(): ?string
-        {
-            return $this->titre;
-        }
+    public function setPage(?Page $page): self
+    {
+        $this->page = $page;
 
-        public function setTitre(string $titre): self
-        {
-            $this->titre = $titre;
-
-            return $this;
-        }
-        public function getPage(): ?Page
-        {
-            return $this->page;
-        }
-    
-        public function setPage(?Page $page): self
-        {
-            $this->page = $page;
-    
-            return $this;
-        }
+        return $this;
+    }
+    /**
+     * @return UploadedFile
+    */
+    public function getFichier()
+    {
+        return $this->fichier;
     }
     
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $fichier
+    */
+    public function setFichier($fichier)
+    {
+        $this->fichier = $fichier;
+        }
 
+    public function getOriginalDocument(): ?string
+    {
+        return $this->originalDocument;
+    }
+
+    public function setOriginalDocument(string $originalDocument): self
+    {
+        $this->originalDocument = $originalDocument;
+
+        return $this;
+    }
+    
+}
