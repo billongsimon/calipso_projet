@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Page;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 
 
@@ -15,9 +16,14 @@ class FrontofficeController extends AbstractController
      * @Route("/", name="frontoffice")
      */
     public function index()
+
     {
+        $repo = $this->getDoctrine()->getRepository(Page::class);
+        $page = $repo-> findLastPages();
+
         return $this->render('frontoffice/index.html.twig', [
             'controller_name' => 'FrontofficeController',
+            'page'            => $page,
         ]);
     }
       
@@ -38,7 +44,7 @@ class FrontofficeController extends AbstractController
     
         return $this->render('frontoffice/page2.html.twig', [
             'controller_name' => 'FrontofficeController',
-            'page'            => $page,
+            'pages'            => $pages,
        
         ]);
             

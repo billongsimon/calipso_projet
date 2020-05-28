@@ -40,7 +40,7 @@
     </header>
     <article>
 
-         {% for page in page %}
+        
 
 
       <div class="row">
@@ -53,33 +53,41 @@
               <div class="col-4">
                 <img src="img/logo.png" class="w-100" alt="DIONIS">
                 <H3 class=" mt-4">Projet 1</H3>
+                 {% for page in page %}
                 <p>
 
-                    <a href="{{path('frontoffice.show',{'id':page.id})}}">{{page.titre}}</a>
-                   <<a href="{{path('frontoffice.show',{'id':page.id})}}">{{page.contenu}}</a>
+                    <h1>{{page.titre}}</h1>
+                    <br>
+                   <h2>{{page.contenu}}</h2>
 
                   La zone « vie des projets » est destiné à l'actualité des projets de direction.
-                  Elle est moins mise en avant que la zone « À la une ».
+
                 </p>
               </div>
               <div class="col-4">
                 <img src="img/logo.png" class="w-100" alt="DIONIS">
                 <H3 class=" mt-4">Projet 2</H3>
                 <p>
-                  La zone « vie des projets » est destiné à l'actualité des projets de direction.
-                  Elle est moins mise en avant que la zone .
+                       <h1>{{page.titre}}</h1>
+                    <br>
+                   <h2>{{page.contenu}}</h2>
                 </p>
               </div>
+                
               <div class="col-4">
                 <img src="img/logo.png" class="w-100" alt="DIONIS">
                 <H3 class=" mt-4">Projet 3</H3>
                 <p>
-                  La zone « vie des projets » est destiné à l'actualité des projets de direction.
-                  Elle est moins mise en avant que la zone.
+                       <h1>{{page.titre}}</h1>
+                    <br>
+                
+                   <h2>{{page.contenu}}</h2>
+                {% endfor%}
                 </p>
+                
               </div>
             </div>
-            {% endfor %}
+         
           </div>
         </div>
         <div class="col-4">

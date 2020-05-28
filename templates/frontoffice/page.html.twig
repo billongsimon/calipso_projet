@@ -21,12 +21,13 @@
 
     </header>
     <article>
-
+          {% for page in page %}
       <div class="row">
         <div class="col-8">
           <div class="vie-des-projets">
-            <h2>Titre de la page</h2>
-
+               {{page.titre}}
+            <h2>Titre de la page</h2>>
+                    
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a feugiat metus.
               Pellentesque vehicula nunc nec sollicitudin mattis. Donec felis lacus, egestas ac dolor non,
@@ -74,6 +75,7 @@
         <div class="col-3 text-right">
           <a href="#" data-toggle="collapse" data-target=".menu">&times;</a>
         </div>
+    {% endfor %}
       </div>
       <div class="row">
         <div class="col-12">
