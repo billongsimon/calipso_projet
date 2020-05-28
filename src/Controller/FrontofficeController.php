@@ -20,15 +20,7 @@ class FrontofficeController extends AbstractController
             'controller_name' => 'FrontofficeController',
         ]);
     }
-      /**
-     * @Route("/page", name="frontoffice_page")
-     */
-    public function page()
-    {
-        return $this->render('frontoffice/page.html.twig', [
-            'controller_name' => 'FrontofficeController',
-        ]);
-    }
+      
       
     /**
      * @Route("/page2", name="FRINTOFFICE-PAGE2")
@@ -48,9 +40,26 @@ class FrontofficeController extends AbstractController
             'controller_name' => 'FrontofficeController',
             'page'            => $page,
        
-          
         ]);
             
     }
   
-}
+/**
+* @Route("/page/{id}", name="frontoffice.show")
+@param Request $request
+* @param $id
+* @return \Symfony\Component\HttpFoundation\Response
+*/
+// la ppage unique
+
+public function show1($id, Request $request)
+{
+   $repo = $this->getDoctrine()->getRepository(Page::class);
+   $page = $repo->find($id);
+  
+   return $this->render('frontoffice/page.html.twig', [
+    'controller_name' => 'FrontofficeController',
+       'page'            => $page
+        ]);
+    }
+}   
