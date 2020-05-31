@@ -40,10 +40,13 @@
       <p>documents </p>
       {% for document in page.documents %}
     
-    {{ document.titre }}<br>
+   <a href="{{ path('document.upload', {'id': document.id}) }}" target="_blank" class="btn btn-info">  {{document.titre}}</a><br><br>
 
 {% endfor %}
             </div>
        </article>   
-      <a href="{{ path('admin') }}"retour vers l'accueil</a>     
+      <a href="{{ path('admin') }}"retour vers l'accueil</a>.
+      <br>
+      <br>
+      <br>     
 {% endblock %}

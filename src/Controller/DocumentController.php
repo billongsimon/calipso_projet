@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 /**
  * @Route("/document")
  */
@@ -109,4 +109,15 @@ class DocumentController extends AbstractController
 
         return $this->redirectToRoute('document_index');
     }
+       /**
+     * @Route("/admin/document/download/{id}", name="document.upload")
+     * @return BinaryFileResponse
+     */
+    public function downloadAction($uploadDir, Document $document)
+    {
+        $file = $uploadDir.$document->getOriginalDocument(); // Path to the file on the server
+
+        return $this->file($file, $document->getTitre());
+    }
 }
+

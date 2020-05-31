@@ -160,6 +160,25 @@ class AdminController extends AbstractController
         if ($form->isSubMitted() && $form->isValid()) {
             $manager->persist($page);
             $manager->flush();
+            
+            /** @var Page $page */
+            $page = $form->getData();
+
+            $repoDocument = $manager->getRepository(Document::class);
+            $document = $repoDocument->findOneBy(['page' => $page->getId()]);
+            if($document){
+                $document->setPage(null);
+                $manager->persist($document);
+                $manager->flush();
+            }
+
+            foreach ($page->getDocuments() as $document) {
+                $document->setPage($page);
+            }
+
+            $page->setJourAt(new \DateTime());
+            $manager->persist($page);
+            $manager->flush();
 
             return $this->redirectToRoute('admin.page',
                 ['id' => $page->getId()]);
