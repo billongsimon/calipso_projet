@@ -46,32 +46,25 @@
         <div class="col-8">
           <div class="vie-des-projets">
             <h2 class="text-right">La vie des projets</h2>
-        {% for page in page %} 
+      
             <div class="row mt-4">
+              {% for page in pages %} 
               <div class="col-4">
                 <img src="img/logo.png" class="w-100" alt="DIONIS">
-                <H3 class="mt-4">Projet 1</H3>
+                <H3 class="mt-4">Projet </H3>
                 <p>
-                  La zone « vie des projets » est destiné à l'actualité des projets de direction.
-                  Elle est moins mise en avant que la zone « À la une ».
+                      <h1>{{ page.titre }}</h1>
+                      <h2>{{ page.contenu }}</h2>
                 </p>
               </div>
        {% endfor %}       
               <div class="col-4">
-                <img src="img/logo.png" class="w-100" alt="DIONIS">
-                <H3 class=" mt-4">Projet 2</H3>
-                <p>
-                  La zone « vie des projets » est destiné à l'actualité des projets de direction.
-                  Elle est moins mise en avant que la zone .
-                </p>
+             
+          
               </div>
               <div class="col-4">
-                <img src="img/logo.png" class="w-100" alt="DIONIS">
-                <H3 class=" mt-4">Projet 3</H3>
-                <p>
-                  La zone « vie des projets » est destiné à l'actualité des projets de direction.
-                  Elle est moins mise en avant que la zone.
-                </p>
+
+           
               </div>
             </div>
 
