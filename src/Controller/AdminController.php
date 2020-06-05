@@ -199,6 +199,7 @@ class AdminController extends AbstractController
     {
         $repo = $this->getDoctrine()->getRepository(Page::class);
         $page = $repo->find($id);
+         
 
         $manager->remove($page);
         $manager->flush();

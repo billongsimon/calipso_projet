@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Document;
+use App\Entity\Page;
 use App\Form\DocumentType;
 use App\Repository\DocumentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -101,13 +102,18 @@ class DocumentController extends AbstractController
      */
     public function delete(Request $request, Document $document): Response
     {
+        
         if ($this->isCsrfTokenValid('delete'.$document->getId(), $request->request->get('_token'))) {
+           
             $entityManager = $this->getDoctrine()->getManager();
+            $document->setPage(null);
             $entityManager->remove($document);
             $entityManager->flush();
-        }
+         
+        
 
         return $this->redirectToRoute('document_index');
+          }
     }
        /**
      * @Route("/admin/document/download/{id}", name="document.upload")

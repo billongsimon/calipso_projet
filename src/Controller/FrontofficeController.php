@@ -65,7 +65,7 @@ public function show1($id, Request $request)
   
    return $this->render('frontoffice/page.html.twig', [
     'controller_name' => 'FrontofficeController',
-       'page'            => $page
+       'pages'            => $page
         ]);
     }
 }   

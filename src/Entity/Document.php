@@ -92,5 +92,20 @@ class Document
 
         return $this;
     }
-    
+    public function removeDocument(Document $document): self
+    {
+        if ($this->documents->contains($document)) {
+            $this->documents->removeElement($document);
+            // set the owning side to null (unless already changed)
+            if ($document->getPage() === $this) {
+                $document->setPage(null);
+            }
+
+        }
+        
+        return $this;
+    }
+
 }
+
+

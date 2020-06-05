@@ -48,9 +48,12 @@
             <h2 class="text-right">La vie des projets</h2>
       
             <div class="row mt-4">
+            {% set myVal =0 %}
               {% for page in pages %} 
               <div class="col-4">
                 <img src="img/logo.png" class="w-100" alt="DIONIS">
+                  {% set myVal = myVal + 1 %}<p>
+                    <H3 class="mt-4">Projet  {{myVal }} </H3>
                 <H3 class="mt-4">Projet </H3>
                 <p>
                       <h1>{{ page.titre }}</h1>
